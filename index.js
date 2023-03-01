@@ -16,6 +16,9 @@ scanButton.addEventListener("click", async () => {
        document.write(`> record type: (${message.records[0].recordType})`);
        document.write(`> data: (${message.records[0].data})`);
       document.write(`> data: (${message.records[0]})`);
+       
+  const textDecoder = new TextDecoder(message.records[0].encoding);
+  document.write(`Text: ${textDecoder.decode(message.records[0].data)} (${message.records[0].lang})`);
      
     });
   
