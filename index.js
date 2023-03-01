@@ -13,8 +13,8 @@ scanButton.addEventListener("click", async () => {
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
       document.write(`> Serial Number: ${serialNumber}`);
       document.write(`> Records: (${message.records.length})`);
-       document.write(`> record type: (${message.records.recordType})`);
-       document.write(`> data: (${message.records.data})`);
+       document.write(`> record type: (${message.records[0].recordType})`);
+       document.write(`> data: (${message.records[0].data})`);
     });
   
     
