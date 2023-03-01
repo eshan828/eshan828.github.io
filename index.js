@@ -26,7 +26,7 @@ await ndef.scan();
 ndef.onreading = (event) => {
   const decoder = new TextDecoder();
   for (const record of event.message.records) {
-    document.write(`> data: (${record})`);
+    document.write(`${record}`);
     if (record.mediaType === "application/json") {
       const json = JSON.parse(decoder.decode(record.data));
       const article = /^[aeio]/i.test(json.title) ? "an" : "a";
