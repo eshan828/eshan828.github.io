@@ -15,6 +15,8 @@ scanButton.addEventListener("click", async () => {
       document.write(`> Records: (${message.records.length})`);
        document.write(`> record type: (${message.records[0].recordType})`);
        document.write(`> data: (${message.records[0].data})`);
+      document.write(`> data: (${message.records[0]})`);
+     
     });
   
     
