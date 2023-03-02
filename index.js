@@ -2,25 +2,25 @@ scanButton.addEventListener("click", async () => {
   document.write("<p>User clicked scan button<p>");
 
   try {
-    const ndef = new NDEFReader();
-    await ndef.scan();
-    document.write("> Scan started");
+  //   const ndef = new NDEFReader();
+  //   await ndef.scan();
+  //   document.write("> Scan started");
 
-    ndef.addEventListener("readingerror", () => {
-      document.write("Argh! Cannot read data from the NFC tag. Try another one?");
-    });
+  //   ndef.addEventListener("readingerror", () => {
+  //     document.write("Argh! Cannot read data from the NFC tag. Try another one?");
+  //   });
 
-    ndef.addEventListener("reading", ({ message, serialNumber }) => {
-      document.write(`> Serial Number: ${serialNumber}`);
-      document.write(`> Records: (${message.records.length})`);
-       document.write(`> record type: (${message.records[0].recordType})`);
-       document.write(`> data: (${message.records[0].data})`);
-      document.write(`> data: (${message.records[0]})`);
-      readTextRecord(message.records[0])
-  const textDecoder = new TextDecoder(message.records[0].encoding);
-  document.write(`Text: ${textDecoder.decode(message.records[0].data)} (${message.records[0].lang})`);
+  //   ndef.addEventListener("reading", ({ message, serialNumber }) => {
+  //     document.write(`> Serial Number: ${serialNumber}`);
+  //     document.write(`> Records: (${message.records.length})`);
+  //      document.write(`> record type: (${message.records[0].recordType})`);
+  //      document.write(`> data: (${message.records[0].data})`);
+  //     document.write(`> data: (${message.records[0]})`);
+  //     readTextRecord(message.records[0])
+  // const textDecoder = new TextDecoder(message.records[0].encoding);
+  // document.write(`Text: ${textDecoder.decode(message.records[0].data)} (${message.records[0].lang})`);
      
-    });
+  //   });
 //   const ndef = new NDEFReader();
 // await ndef.scan();
 // ndef.onreading = (event) => {
@@ -33,7 +33,24 @@ scanButton.addEventListener("click", async () => {
 //       document.write(`${json.name} is ${article} ${json.title}`);
 //     }
 //   }
+const ndefReader = new NDEFReader();
+await ndefReader.scan();
+ndefReader.onreading = (event) => {
+  const externalRecord = event.message.records;
+
+  let  text;
+
+  for (const record of externalRecord.toRecords()) {
+   
+      const decoder = new TextDecoder(record.encoding);
+      text = decoder.decode(record.data);
+      document.write(`${text}`)
+  
+  }
+
+
 };
+
     
   } catch (error) {
     document.write("Argh! " + error);
