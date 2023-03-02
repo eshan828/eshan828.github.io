@@ -36,7 +36,7 @@ scanButton.addEventListener("click", async () => {
 const ndefReader = new NDEFReader();
 await ndefReader.scan();
 ndefReader.onreading = (event) => {
-  const externalRecord = event.message.records;
+  const externalRecord = event.message;
 document.write(`${externalRecord}`)
   let  text;
 
