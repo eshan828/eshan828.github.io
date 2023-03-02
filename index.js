@@ -40,6 +40,8 @@ ndefReader.onreading = (event) => {
 document.write(`Records ${event.message.records.length}`)
   document.write(`Record type ${event.message.records.recordType}`)
   document.write(`data ${NDEFRecord.toRecords(event.message.records.data)}`)
+    document.write(`id ${event.message.records.id}`)
+  document.write(`encoding ${event.message.records.encoding}`)
   let  text;
 
   for (const record of externalRecord.toRecords()) {
