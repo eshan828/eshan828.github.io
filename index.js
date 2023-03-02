@@ -37,7 +37,7 @@ const ndefReader = new NDEFReader();
 await ndefReader.scan();
 ndefReader.onreading = (event) => {
   const externalRecord = event.message;
-document.write(`${externalRecord}`)
+document.write(`Records ${event.message.records.length}`)
   let  text;
 
   for (const record of externalRecord.toRecords()) {
