@@ -1,35 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFC</title>
-</head>
-<body>
+<html>
+  <head>
+    <title>Web NFC Read Write</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="0-dummy.css">
+    <script defer src="1-read-write.js"></script>
+  </head>
+  <body>
+    <!-- (A) NFC TAG ACTIONS -->
+    <div id="demoNFC">
+      <input type="text" id="demoT" value="Hello World" required>
+      <input type="button" id="demoW" value="Write" disabled onclick="nfc.write();">
+      <input type="button" id="demoR" value="Read" disabled onclick="nfc.read()">
+    </div>
 
-<h3>Background</h3>
-<p>
-Web NFC aims to provide sites the ability to read and write to NFC tags when
-they are brought in close proximity to the user’s device (usually 5-10 cm, 2-4
-inches). The current scope is limited to NDEF, a lightweight binary message
-format. Low-level I/O operations (e.g. ISO-DEP, NFC-A/B, NFC-F) and Host-based
-Card Emulation (HCE) are not supported within the current scope.
-</p>
-<p id="output"></p>
-    <p id="output2"></p>
-<button id="scanButton">Scan</button>
-<button id="writeButton">Write</button>
-<button id="makeReadOnlyButton">Make Read-Only</button>
-
-
-    
-</body>
-<script src="index.js">
-log = ChromeSamples.log;
-
-if (!("NDEFReader" in window))
-  ChromeSamples.setStatus("Web NFC is not available. Use Chrome on Android.");
-</script>
-
+    <!-- (B) "CONSOLE MESSAGES" -->
+    <div id="demoMSG"></div>
+  </body>
 </html>
