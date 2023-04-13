@@ -44,6 +44,8 @@ var nfc = {
     .then(() => {
       ndef.onreadingerror = err => nfc.logger("Read failed");
       ndef.onreading = evt => {
+         nfc.logger("Object " + evt);
+         nfc.logger("Serial Number " + evt.serialNumber);
         const decoder = new TextDecoder();
         for (let record of evt.message.records) {
           nfc.logger("Record type: " + record.recordType);
